@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Simple Calculator</title>
+    <style>
+        body { 
+            text-align: center; 
+            font-family: Arial; 
+            background-color: #f9f9f9;
+            padding-top: 50px;
+        }
+        .box {
+            display: inline-block;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        input {
+            width: 180px;
+            height: 40px;
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        button {
+            width: 45px;
+            height: 45px;
+            margin: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h3>Calculator</h3>
+        <input type="text" id="ans" value="0" readonly>
+        <br>
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button onclick="press('/')">/</button>
+        <br>
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button onclick="press('*')">x</button>
+        <br>
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button onclick="press('-')">-</button>
+        <br>
+        <button onclick="press('0')">0</button>
+        <button onclick="clr()">C</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="press('+')">+</button>
+    </div>
+
+    <script>
+        let screen = document.getElementById("ans");
+
+        function press(num) {
+            if (screen.value === "0") {
+                screen.value = num;
+            } else {
+                screen.value += num;
+            }
+        }
+
+        function clr() {
+            screen.value = "0";
+        }
+
+        function calculate() {
+            try {
+                screen.value = eval(screen.value);
+            } catch (err) {
+                screen.value = "Error";
+            }
+        }
+    </script>
+
+</body>
+</html>
